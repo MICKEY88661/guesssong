@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentPage = 0;
   late final PageController pageCtrl;
-  final player = audio.AudioPlayer();
+  // final player = audio.AudioPlayer();
 
   @override
   void initState() {
@@ -52,16 +52,16 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          const String url =
-              'https://fs-preview.kfs.io/201307/0twvYuwqmT0x0mpLw_FUBtFAQnzkfdWeKlkkrtwLN8CDky3dVmo=?__gda__=1676449983_d2d6c88aa939c27010f657665dc077ce';
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () async {
+      //     const String url =
+      //         'https://fs-preview.kfs.io/201307/0twvYuwqmT0x0mpLw_FUBtFAQnzkfdWeKlkkrtwLN8CDky3dVmo=?__gda__=1676449983_d2d6c88aa939c27010f657665dc077ce';
 
-          final duration = await player.setUrl(url);
-          await player.play();
-        },
-        child: Text('test'),
-      ),
+      //     final duration = await player.setUrl(url);
+      //     await player.play();
+      //   },
+      //   child: Text('test'),
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentPage,
         onTap: (index) {

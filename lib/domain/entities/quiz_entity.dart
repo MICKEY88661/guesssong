@@ -1,3 +1,4 @@
+import '../../data/models/quiz.dart';
 import 'track_entity.dart';
 
 class QuizEntity {
@@ -15,14 +16,18 @@ class QuizEntity {
     required this.tracks,
   });
 
-  // TODO do mapping
-  factory QuizEntity.fromModel() {
+  factory QuizEntity.fromModel(QuizModel model) {
+    List<TrackEntity> tracks = [];
+    for (var track in model.tracks!.data!) {
+      tracks.add(TrackEntity.formModel(track));
+    }
+
     return QuizEntity(
-      id: '',
-      sourceUrl: '',
-      title: '',
-      description: '',
-      tracks: [],
+      id: model.id ?? '',
+      sourceUrl: model.url ?? '',
+      title: model.title ?? '',
+      description: model.description ?? '',
+      tracks: tracks,
     );
   }
 }

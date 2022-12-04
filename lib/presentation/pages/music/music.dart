@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../components/stepper_ctrl_btn.dart';
+import '../../components/video_player.dart';
+
 class MusicPage extends StatefulWidget {
   const MusicPage({super.key});
 
@@ -8,29 +11,66 @@ class MusicPage extends StatefulWidget {
 }
 
 class _MusicPageState extends State<MusicPage> {
+  int currentStep = 0;
+
+  void onStepTapped(int index) {
+    setState(() {
+      currentStep = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          title: Text(
-            'Guess by Music',
-          ),
-          flexibleSpace: FlexibleSpaceBar(
-            collapseMode: CollapseMode.parallax,
-            background: Image(
-              image: AssetImage('assets/images/music-bg.png'),
-            ),
-          ),
-          pinned: true,
-          expandedHeight: 200.0,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          'Guess by MUSIC',
+          style: Theme.of(context).textTheme.headline2,
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return const Text('...');
+        Text(
+          'Guess the song by its music',
+          style: Theme.of(context).textTheme.subtitle1,
+        ),
+        Flexible(
+          fit: FlexFit.loose,
+          child: Stepper(
+            currentStep: currentStep,
+            onStepTapped: onStepTapped,
+            controlsBuilder: (BuildContext context, ControlsDetails details) {
+              return const StepperControlButton();
             },
-            childCount: 2,
+            steps: [
+              const Step(
+                title: Text('Search for queston base'),
+                subtitle: Text('by singer, album, year or other keywords'),
+                content: TextField(),
+              ),
+              Step(
+                title: const Text('Choose a queston base'),
+                subtitle: const Text('source from KKBOX\'s song lists'),
+                content: SizedBox(
+                  height: 200.0,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: SizedBox.square(
+                          dimension: 200.0,
+                          child: Text('$index'),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const Step(
+                title: Text('Guess!'),
+                subtitle: Text('we will play the preview music'),
+                content: VideoPlayer(),
+              ),
+            ],
           ),
         ),
       ],

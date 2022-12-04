@@ -1,6 +1,5 @@
 import 'package:http/http.dart' as http;
 
-// TODO restful
 class RemoteClient extends http.BaseClient {
   final http.Client _innerClient;
 

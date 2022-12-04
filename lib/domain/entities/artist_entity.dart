@@ -1,3 +1,5 @@
+import 'package:guesssong/data/models/artist.dart';
+
 class ArtistEntity {
   final String id;
   final String name;
@@ -8,4 +10,12 @@ class ArtistEntity {
     required this.name,
     required this.imageUrl,
   });
+
+  factory ArtistEntity.fromModel(ArtistModel model) {
+    return ArtistEntity(
+      id: model.id ?? '',
+      name: model.name ?? '',
+      imageUrl: model.images!.first.url!,
+    );
+  }
 }

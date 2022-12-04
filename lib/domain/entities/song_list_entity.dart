@@ -1,3 +1,5 @@
+import '../../data/models/play_list.dart';
+
 class SongListEntity {
   final String id;
   final String imageUrl;
@@ -8,12 +10,12 @@ class SongListEntity {
     required this.imageUrl,
     required this.title,
   });
-  // TODO do mapping
-  factory SongListEntity.fromModel() {
+
+  factory SongListEntity.fromModel(PlayListModel model) {
     return SongListEntity(
-      id: '',
-      imageUrl: '',
-      title: '',
+      id: model.id ?? '',
+      imageUrl: model.image ?? '',
+      title: model.title ?? '',
     );
   }
 }
