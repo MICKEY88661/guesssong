@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../components/stepper_ctrl_btn.dart';
 import '../../components/video_player.dart';
 
+// TODO
 class LyricPage extends StatefulWidget {
   const LyricPage({super.key});
 
@@ -26,7 +26,7 @@ class _LyricPageState extends State<LyricPage> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'Guess by LYRIC',
+          'Guess by \nLYRIC',
           style: Theme.of(context).textTheme.headline2,
         ),
         Text(
@@ -38,9 +38,6 @@ class _LyricPageState extends State<LyricPage> {
           child: Stepper(
             currentStep: currentStep,
             onStepTapped: onStepTapped,
-            controlsBuilder: (BuildContext context, ControlsDetails details) {
-              return const StepperControlButton();
-            },
             steps: [
               const Step(
                 title: Text('Search for queston base'),

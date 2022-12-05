@@ -26,14 +26,14 @@ class TracksModel {
 @JsonSerializable()
 class TrackModel {
   final AlbumModel? album;
-  @JsonValue('available_territories')
+  @JsonKey(name: 'available_territories')
   final List<String>? availableTerritories;
   final int? duration;
   final bool? explicitness;
   final String? id;
   final String? isrc;
   final String? name;
-  @JsonValue('track_number')
+  @JsonKey(name: 'track_number')
   final int? trackNumber;
   final String? url;
 

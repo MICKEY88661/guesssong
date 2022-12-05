@@ -24,9 +24,9 @@ class PlayListsModel {
 
 @JsonSerializable()
 class PagingModel {
-  @JsonValue('next')
+  @JsonKey(name: 'next')
   final String? nextUrl;
-  @JsonValue('previous')
+  @JsonKey(name: 'previous')
   final String? previousUrl;
 
   PagingModel({
@@ -61,7 +61,7 @@ class PlayListModel {
   final CreatorModel? creator;
   final String? id;
   final String? image;
-  @JsonValue('short_url')
+  @JsonKey(name: 'short_url')
   final String? shortURL;
   final String? title;
   final String? url;

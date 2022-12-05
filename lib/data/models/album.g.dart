@@ -10,7 +10,7 @@ AlbumModel _$AlbumModelFromJson(Map<String, dynamic> json) => AlbumModel(
       artist: json['artist'] == null
           ? null
           : ArtistModel.fromJson(json['artist'] as Map<String, dynamic>),
-      availableTerritories: (json['availableTerritories'] as List<dynamic>?)
+      availableTerritories: (json['available_territories'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       explicitness: json['explicitness'] as bool?,
@@ -19,20 +19,20 @@ AlbumModel _$AlbumModelFromJson(Map<String, dynamic> json) => AlbumModel(
           ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       name: json['name'] as String?,
-      releaseDate: json['releaseDate'] == null
+      releaseDate: json['release_date'] == null
           ? null
-          : DateTime.parse(json['releaseDate'] as String),
+          : DateTime.parse(json['release_date'] as String),
       url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$AlbumModelToJson(AlbumModel instance) =>
     <String, dynamic>{
       'artist': instance.artist,
-      'availableTerritories': instance.availableTerritories,
+      'available_territories': instance.availableTerritories,
       'explicitness': instance.explicitness,
       'id': instance.id,
       'images': instance.images,
       'name': instance.name,
-      'releaseDate': instance.releaseDate?.toIso8601String(),
+      'release_date': instance.releaseDate?.toIso8601String(),
       'url': instance.url,
     };

@@ -8,13 +8,13 @@ part 'album.g.dart';
 @JsonSerializable()
 class AlbumModel {
   final ArtistModel? artist;
-  @JsonValue('available_territories')
+  @JsonKey(name: 'available_territories')
   final List<String>? availableTerritories;
   final bool? explicitness;
   final String? id;
   final List<ImageModel>? images;
   final String? name;
-  @JsonValue('release_date')
+  @JsonKey(name: 'release_date')
   final DateTime? releaseDate;
   final String? url;
 

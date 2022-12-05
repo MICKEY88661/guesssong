@@ -7,10 +7,10 @@ part of 'preview.dart';
 // **************************************************************************
 
 PreviewModel _$PreviewModelFromJson(Map<String, dynamic> json) => PreviewModel(
-      previewUrl: json['previewUrl'] as String?,
+      previewUrl: json['preview_url'] as String?,
     );
 
 Map<String, dynamic> _$PreviewModelToJson(PreviewModel instance) =>
     <String, dynamic>{
-      'previewUrl': instance.previewUrl,
+      'preview_url': instance.previewUrl,
     };

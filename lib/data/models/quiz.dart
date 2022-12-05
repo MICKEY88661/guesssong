@@ -14,7 +14,7 @@ class QuizModel {
   final OwnerModel? owner;
   final String? title;
   final TracksModel? tracks;
-  @JsonValue('updated_at')
+  @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
   final String? url;
 

@@ -4,12 +4,17 @@ import 'package:guesssong/domain/entities/song_list_entity.dart';
 import 'package:guesssong/domain/entities/quiz_entity.dart';
 import 'package:guesssong/domain/i_repositories/i_song_repo.dart';
 import 'package:http/http.dart';
+import 'package:riverpod/riverpod.dart';
 
 import '../core/uri_helper.dart';
 import '../data_sources/remote_client.dart';
 import '../models/play_list.dart';
 import '../models/preview.dart';
 import '../models/quiz.dart';
+
+final songRepoProvider = Provider((ref) {
+  return SongRepository(remoteClient: RemoteClient());
+});
 
 class SongRepository implements ISongRepository {
   final RemoteClient remoteClient;
@@ -47,7 +52,7 @@ class SongRepository implements ISongRepository {
       return preview.previewUrl ?? '';
     } catch (e) {
       print(e);
-      return '';
+      rethrow;
     }
   }
 
@@ -70,11 +75,11 @@ class SongRepository implements ISongRepository {
   Future<List<SongListEntity>> searchPlayList(String keyword) async {
     try {
       List<SongListEntity> result = [];
+
       final path = UriHelper.uri("search_playlist/$keyword");
       final Response response = await remoteClient.get(path);
       final bodyJson = jsonDecode(response.body);
       final playLists = PlayListsModel.fromJson(bodyJson);
-
       if (playLists.data?.result != null) {
         for (PlayListModel playList in playLists.data!.result!) {
           result.add(

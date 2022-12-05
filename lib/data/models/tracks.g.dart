@@ -29,7 +29,7 @@ TrackModel _$TrackModelFromJson(Map<String, dynamic> json) => TrackModel(
       album: json['album'] == null
           ? null
           : AlbumModel.fromJson(json['album'] as Map<String, dynamic>),
-      availableTerritories: (json['availableTerritories'] as List<dynamic>?)
+      availableTerritories: (json['available_territories'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       duration: json['duration'] as int?,
@@ -37,20 +37,20 @@ TrackModel _$TrackModelFromJson(Map<String, dynamic> json) => TrackModel(
       id: json['id'] as String?,
       isrc: json['isrc'] as String?,
       name: json['name'] as String?,
-      trackNumber: json['trackNumber'] as int?,
+      trackNumber: json['track_number'] as int?,
       url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$TrackModelToJson(TrackModel instance) =>
     <String, dynamic>{
       'album': instance.album,
-      'availableTerritories': instance.availableTerritories,
+      'available_territories': instance.availableTerritories,
       'duration': instance.duration,
       'explicitness': instance.explicitness,
       'id': instance.id,
       'isrc': instance.isrc,
       'name': instance.name,
-      'trackNumber': instance.trackNumber,
+      'track_number': instance.trackNumber,
       'url': instance.url,
     };
 

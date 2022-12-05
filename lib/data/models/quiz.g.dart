@@ -19,9 +19,9 @@ QuizModel _$QuizModelFromJson(Map<String, dynamic> json) => QuizModel(
       tracks: json['tracks'] == null
           ? null
           : TracksModel.fromJson(json['tracks'] as Map<String, dynamic>),
-      updatedAt: json['updatedAt'] == null
+      updatedAt: json['updated_at'] == null
           ? null
-          : DateTime.parse(json['updatedAt'] as String),
+          : DateTime.parse(json['updated_at'] as String),
       url: json['url'] as String?,
     );
 
@@ -32,6 +32,6 @@ Map<String, dynamic> _$QuizModelToJson(QuizModel instance) => <String, dynamic>{
       'owner': instance.owner,
       'title': instance.title,
       'tracks': instance.tracks,
-      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
       'url': instance.url,
     };

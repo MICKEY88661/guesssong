@@ -25,14 +25,14 @@ Map<String, dynamic> _$PlayListsModelToJson(PlayListsModel instance) =>
     };
 
 PagingModel _$PagingModelFromJson(Map<String, dynamic> json) => PagingModel(
-      nextUrl: json['nextUrl'] as String?,
-      previousUrl: json['previousUrl'] as String?,
+      nextUrl: json['next'] as String?,
+      previousUrl: json['previous'] as String?,
     );
 
 Map<String, dynamic> _$PagingModelToJson(PagingModel instance) =>
     <String, dynamic>{
-      'nextUrl': instance.nextUrl,
-      'previousUrl': instance.previousUrl,
+      'next': instance.nextUrl,
+      'previous': instance.previousUrl,
     };
 
 PlayListsDataModel _$PlayListsDataModelFromJson(Map<String, dynamic> json) =>
@@ -56,7 +56,7 @@ PlayListModel _$PlayListModelFromJson(Map<String, dynamic> json) =>
           : CreatorModel.fromJson(json['creator'] as Map<String, dynamic>),
       id: json['id'] as String?,
       image: json['image'] as String?,
-      shortURL: json['shortURL'] as String?,
+      shortURL: json['short_url'] as String?,
       title: json['title'] as String?,
       url: json['url'] as String?,
     );
@@ -66,7 +66,7 @@ Map<String, dynamic> _$PlayListModelToJson(PlayListModel instance) =>
       'creator': instance.creator,
       'id': instance.id,
       'image': instance.image,
-      'shortURL': instance.shortURL,
+      'short_url': instance.shortURL,
       'title': instance.title,
       'url': instance.url,
     };

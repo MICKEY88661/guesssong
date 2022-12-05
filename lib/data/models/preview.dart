@@ -4,6 +4,7 @@ part 'preview.g.dart';
 
 @JsonSerializable()
 class PreviewModel {
+  @JsonKey(name: 'preview_url')
   final String? previewUrl;
 
   PreviewModel({this.previewUrl});

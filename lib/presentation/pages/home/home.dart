@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             });
           },
           children: const [
-            LyricPage(),
+            // LyricPage(),
             MusicPage(),
           ],
         ),
@@ -62,16 +62,16 @@ class _HomePageState extends State<HomePage> {
       //   },
       //   child: Text('test'),
       // ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentPage,
-        onTap: (index) {
-          pageCtrl.jumpToPage(index);
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.lyrics), label: 'Lyric'),
-          BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music')
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   currentIndex: currentPage,
+      //   onTap: (index) {
+      //     pageCtrl.jumpToPage(index);
+      //   },
+      //   items: const [
+      //     BottomNavigationBarItem(icon: Icon(Icons.lyrics), label: 'Lyric'),
+      //     BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music')
+      //   ],
+      // ),
     );
   }
 }
