@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:just_audio/just_audio.dart' as audio;
 
 import '../music/music.dart';
-import '../lyric/lyric.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +12,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentPage = 0;
   late final PageController pageCtrl;
-  // final player = audio.AudioPlayer();
 
   @override
   void initState() {
@@ -34,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('gueSSSong'),
+        title: const Text('-gueSSSong-'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

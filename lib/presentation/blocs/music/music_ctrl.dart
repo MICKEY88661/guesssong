@@ -6,6 +6,7 @@ import 'package:riverpod/riverpod.dart';
 
 import '../../../domain/entities/quiz_entity.dart';
 import '../../../domain/entities/song_list_entity.dart';
+import '../../../domain/entities/track_entity.dart';
 
 part 'music_state.dart';
 
@@ -31,12 +32,10 @@ class MusicController extends StateNotifier<MusicState> {
   });
 
   void searchKeywordTyped(String s) {
-    print('searchKeywordTyped $s');
     state = state.copyWith(searchKeyWord: s);
   }
 
   void quizSelected(String id) {
-    print('quizSelected $id');
     state.selectedSongListId == id
         ? state = state.copyWith(selectedSongListId: '')
         : state = state.copyWith(selectedSongListId: id);
@@ -73,6 +72,7 @@ class MusicController extends StateNotifier<MusicState> {
       }
       final songIndex = Random().nextInt(tracks.length);
       final track = tracks.elementAt(songIndex);
+      state = state.copyWith(currentTrack: track);
       return await songService.getPreviewUrl(track.id);
     } catch (e, s) {
       print(e);
