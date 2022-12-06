@@ -201,6 +201,9 @@ class _MusicPageState extends ConsumerState<MusicPage>
                   height: 200.0,
                   child: ref.watch(musicCtrlProvider).songLists.when(
                     data: (songList) {
+                      if (songList.isEmpty) {
+                        return const Text('no data');
+                      }
                       return SongList(songList);
                     },
                     error: (error, stackTrace) {
