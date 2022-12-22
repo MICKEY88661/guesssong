@@ -12,6 +12,7 @@ final songServiceProvider = Provider((ref) {
   );
 });
 
+// 可以在此結合多個Repo
 class SongService {
   final ISongRepository songRepo;
 
@@ -25,4 +26,6 @@ class SongService {
   Future<QuizEntity> getQuiz(String playListId) => songRepo.getQuiz(playListId);
 
   Future<String> getPreviewUrl(String songId) => songRepo.getPreviewUrl(songId);
+
+  Future<String> getLyric() => songRepo.getLiric(singer: '林俊傑', song: '超越無限');
 }

@@ -23,23 +23,21 @@ class SongRepository implements ISongRepository {
     required this.remoteClient,
   });
 
-  // @override
-  // Future getLiric({
-  //   required String singer,
-  //   required String song,
-  // }) async {
-  //   try {
-  //     final path = UriHelper.uri("get_lyric/$singer/$song");
-  //     final Response response = await remoteClient.get(path);
-  //     final bodyJson = jsonDecode(response.body);
-  //     final preview = PreviewModel.fromJson(bodyJson);
+  @override
+  Future<String> getLiric({
+    required String singer,
+    required String song,
+  }) async {
+    try {
+      final path = UriHelper.uri("get_lyric/$singer/$song");
+      final Response response = await remoteClient.get(path);
 
-  //     return preview.previewUrl ?? '';
-  //   } catch (e) {
-  //     print(e);
-  //     return '';
-  //   }
-  // }
+      return response.body;
+    } catch (e) {
+      print(e);
+      return '';
+    }
+  }
 
   @override
   Future<String> getPreviewUrl(String songId) async {

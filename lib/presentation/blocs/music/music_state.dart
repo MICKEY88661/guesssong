@@ -32,6 +32,11 @@ class MusicState extends Equatable {
   }
 
   @override
-  List<Object?> get props =>
-      [searchKeyWord, selectedSongListId, songLists, quiz, currentTrack];
+  List<Object?> get props => [
+        searchKeyWord,
+        selectedSongListId,
+        songLists,
+        quiz,
+        currentTrack,
+      ];
 }

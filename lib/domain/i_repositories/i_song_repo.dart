@@ -9,5 +9,5 @@ abstract class ISongRepository {
   // 取得歌曲預覽
   Future<String> getPreviewUrl(String songId);
   // 取得歌曲歌詞
-  // Future getLiric({required String singer, required String song});
+  Future<String> getLiric({required String singer, required String song});
 }

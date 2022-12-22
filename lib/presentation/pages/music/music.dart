@@ -165,6 +165,7 @@ class _MusicPageState extends ConsumerState<MusicPage>
                       ),
                       TextButton(
                         onPressed: () {
+                          showHint(!isShowAns);
                           showAnswer(!isShowAns);
                         },
                         child: const Text('Answer'),
