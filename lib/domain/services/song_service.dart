@@ -27,5 +27,9 @@ class SongService {
 
   Future<String> getPreviewUrl(String songId) => songRepo.getPreviewUrl(songId);
 
-  Future<String> getLyric() => songRepo.getLiric(singer: '林俊傑', song: '超越無限');
+  Future<String> getLyric({
+    required String singerName,
+    required String songName,
+  }) =>
+      songRepo.getLiric(singer: singerName, song: songName);
 }

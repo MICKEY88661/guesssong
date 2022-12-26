@@ -14,8 +14,7 @@ class Speaker {
   double rate = 0.5;
   bool isCurrentLanguageInstalled = false;
 
-  String? _newVoiceText;
-  int? _inputLength;
+  ProgressHandler progressHandler;
 
   TtsState ttsState = TtsState.stopped;
 
@@ -29,7 +28,7 @@ class Speaker {
   bool get isWindows => !kIsWeb && Platform.isWindows;
   bool get isWeb => kIsWeb;
 
-  Speaker() {
+  Speaker(this.progressHandler) {
     initTts();
   }
 
@@ -49,9 +48,11 @@ class Speaker {
             IosTextToSpeechAudioCategoryOptions.defaultToSpeaker
           ],
           IosTextToSpeechAudioMode.defaultMode);
-      List<dynamic>? languages = await flutterTts.getLanguages;
-      print(languages);
     }
+
+    // 在ios 的模擬器上如果沒有聲音是因為沒有下載語言包 這裡就會return []
+    // List<dynamic>? languages = await flutterTts.getLanguages;
+    // print(languages);
 
     if (isAndroid) {
       _getDefaultEngine();
@@ -83,6 +84,8 @@ class Speaker {
       print("Paused");
       ttsState = TtsState.paused;
     });
+
+    flutterTts.setProgressHandler(progressHandler);
 
     flutterTts.setContinueHandler(() {
       print("Continued");

@@ -22,10 +22,19 @@ class LyricController extends StateNotifier<LyricState> {
     required this.songService,
   });
 
+  void typed(String songName) {
+    state = state.copywith(songName: songName);
+  }
+
   Future<void> getLyric() async {
     try {
+      if (state.songName?.isEmpty ?? true) return;
+
       state = state.copywith(lyric: const AsyncValue.loading());
-      final lyrics = await songService.getLyric();
+      final lyrics = await songService.getLyric(
+        singerName: '林俊傑',
+        songName: state.songName!, //'超越無限',
+      );
       state = state.copywith(lyric: AsyncData(lyrics));
     } catch (e, s) {
       print('error:$e');
